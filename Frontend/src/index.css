@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "syncopate-bold";
+    src: url(../public/fonts/Syncopate-Bold.ttf);
+}
+@font-face {
+    font-family: "syncopate-light";
+    src: url(../public/fonts/Syncopate-Regular.ttf);
+}
+
+body{
+    font-family: syncopate-bold;
+}
+
+.font-syn-regular {
+    font-family: syncopate-light;
+}
+
+.font-syn-bold {
+    font-family: syncopate-bold;
+}
+
+.sidebar{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu{
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.menu div{
+    height: .4px;
+    width: 100%;
+    background-color: #aaa;
+    margin-top: 5px;
+}
