@@ -16,12 +16,12 @@ function InformationBar({show, setShow, type}) {
   },[])
   console.log(type)
   return (
-    <div className={`${show? "right-0" : "hidden"} bg-[#fef6e6] border-[1.5px] w-[60%] rounded-l-3xl px-5 py-3 border-gray-300 z-30 transition-transform text-sm sidebar`}>
+    <div className={`${show? "right-0" : "hidden"} bg-[#fef6e6] border-[1.5px] w-[680px] rounded-l-3xl px-5 py-3 border-gray-300 z-30 transition-transform text-sm sidebar`}>
       <div className="flex items-center mt-5">
         <span onClick={()=>setShow(false)} className="float-left cursor-pointer ml-3"><FaRegTimesCircle className="h-6 w-6 text-gray-300"/></span>
         <span className="text-xl bg-gradient-to-r from-[#9327EB] to-30% to-[#3B93EB] text-transparent bg-clip-text font-light whitespace-nowrap font-syncopate-light text-center mx-auto">{type === 1? 'Business': `FAQ'S`}</span>
       </div>
-      <div className="h-[500px] overflow-y-auto">
+      <div className="h-[538px] overflow-y-auto">
       {type === 1? (
         <>
           <p className="text-[#555] max-w-xl mx-auto mt-8 text-sm font-syn-regular">

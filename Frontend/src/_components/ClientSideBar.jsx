@@ -4,7 +4,7 @@ import { common } from '_helpers';
 function ClientSideBar({show, setShow, selectedUserId, userList, allInfo, onSelect}) {
 
   return (
-    <div className={`${show ? "right-0" : "hidden"} bg-[#fef6e6] border-[1.5px]  rounded-l-3xl px-5 py-3 border-gray-300 z-30 transition-transform text-sm sidebar`}>
+    <div className={`${show ? "right-0" : "hidden"} bg-[#fef6e6] w-[680px] border-[1.5px]  rounded-l-3xl px-5 py-3 border-gray-300 z-30 transition-transform text-sm sidebar`}>
       <h1 className="text-xl mb-5 text-[rgb(143,143,143)] text-center">Sub-Clients</h1>
       <div className="grid grid-cols-3 w-auto h-[500px] overflow-y-auto">
         
