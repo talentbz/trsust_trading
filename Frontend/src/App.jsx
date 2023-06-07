@@ -15,22 +15,32 @@ function App() {
     // anywhere in the react app (inside or outside components)
     history.navigate = useNavigate();
     history.location = useLocation();
-    const [show, setShow] = useState(0);
+    const [infoSidebar, setInfoSideBar] = useState(false);
     const [infoType, setInfoType] = useState(1);
 
     const showInfo = (type)=> {
-      setInfoType(type);
-      setShow(1);
+      setInfoType(type)
     }
 
     return (
       <div className="grid place-items-center pt-10 h-screen bg-[#aaa]">
         <div className='fixed md:hidden lg:flex top-0 w-screen h-8 p-2 px-8 text-[#fff] bg-[#aaa] z-1000 justify-between'>
-          <span className='p-1 cursor-pointer' onClick={()=>showInfo(1)} >Business</span>
+          <span 
+            className='p-1 cursor-pointer' 
+            onClick={() => {
+              showInfo(1);
+              infoType===1 ? setInfoSideBar(!infoSidebar) : setInfoSideBar(infoSidebar);
+            }}
+          >Business</span>
           <span>
-            <span className='mr-5 inline-flex items-center' onClick={()=>showInfo(2)} >
+            <span 
+              className='mr-5 inline-flex items-center cursor-pointer' 
+              onClick={() => {
+                showInfo(2)
+                infoType===2 ? setInfoSideBar(!infoSidebar) : setInfoSideBar(infoSidebar);
+              }}>
               <FaRegQuestionCircle />
-              <span className='p-1 pt-2 cursor-pointer'>FAQ</span>
+              <span className='p-1 pt-2'>FAQ</span>
               </span>
             <span className='mr-5 inline-flex items-center text-[#fff]' >
               <FaGlobe />
@@ -63,8 +73,12 @@ function App() {
                   <Route path="/signup" element={<Signup />} />
                   <Route path="*" element={<Navigate to="/" />} />
               </Routes>
-
-              <InformationBar show={show} setShow={()=>setShow} type={infoType} />
+              
+              <InformationBar
+                show={infoSidebar}
+                setShow={() => setInfoSideBar(false)}
+                type={infoType}
+              />
             </div>
           </div>
         </div>

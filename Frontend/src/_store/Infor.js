@@ -1,7 +1,7 @@
 const data = {
     "name": "Dualnet",
     "website": "dualnet.ch",
-    "about": "about business",
+    "about": "Als Schweizer Non-Profit-Verein namens Dualnet, ist unser Ziel, die Abhängigkeiten in der Finanz- und Börsenwelt zu reduzieren und die notwendigen Verknüpfungen und Dienstleistungen die wir brauchen, möglichst zu dezentralisieren. \n\n Wir setzen auf marktneutralen Handel und verfolgen keine spekulativen Strategien, um Gewinne zu erzielen. \n\n Unser Fokus liegt darauf, Brücken zwischen der Fiat-Welt und der Kryptowelt zu bauen. \n\n Das nächste Ziel ist es, einen 100% Marktneutralen, gehedgeten Margin Handel in der Kryptowelt zu vernetzen. genau wie bei forex entsteht in unserem system kein raum für spekulanten, wir hedgen die investment um nur mit gehedgetem leverage rewards provit zu erzeugen. \n\n Wir laden jeden ein, sich von uns inspirieren zu lassen oder sogar Teil unseres Teams zu werden, um gemeinsam neue Wege zu beschreiten. \n\n Auch wenn wir das Rad nicht neu erfinden, glauben wir daran, dass wir die Art der Reifen verbessern können.",
     "faqs": [
         {
             "question": "Was ist ein Reward Konto?",
