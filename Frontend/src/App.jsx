@@ -1,12 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
-import { FaRegQuestionCircle, FaGlobe } from 'react-icons/fa';
+import { FaRegQuestionCircle, FaGlobe, FaYinYang } from 'react-icons/fa';
 
 import { history } from '_helpers';
-import { PrivateRoute } from '_components';
+import { PrivateRoute, InformationBar} from '_components';
 import { Users, Home } from 'pages';
 import { Login, Signup } from 'auth';
-import { InformationBar } from '_components';
 
 export { App };
 
@@ -15,29 +14,52 @@ function App() {
     // anywhere in the react app (inside or outside components)
     history.navigate = useNavigate();
     history.location = useLocation();
-    const [infoSidebar, setInfoSideBar] = useState(false);
-    const [infoType, setInfoType] = useState(1);
-
+    const [infoSidebar, setInfoSideBar] = useState(null);
+    const [infoType, setInfoType] = useState(null);
+    const [isDarkMode, setIsDarkMode] = useState(false);
     const showInfo = (type)=> {
       setInfoType(type)
     }
+    useEffect(() => {
+      const storedDarkMode = localStorage.getItem('isDarkMode');
+      if (storedDarkMode !== null) {
+        try {
+          setIsDarkMode(JSON.parse(storedDarkMode));
+        } catch (error) {
+          // Handle invalid JSON value
+          console.error('Error parsing dark mode value:', error);
+        }
+      }
+    }, []);
 
+    const toggleDarkMode = () => {
+      const newDarkMode = !isDarkMode;
+      setIsDarkMode(newDarkMode);
+      localStorage.setItem('isDarkMode', JSON.stringify(newDarkMode));
+    };
+    
     return (
-      <div className="grid place-items-center pt-10 h-screen bg-[#aaa]">
+      <div className={`grid place-items-center pt-10 h-screen bg-[#aaa] ${isDarkMode ? 'dark' : 'light'}`}>
         <div className='fixed md:hidden lg:flex top-0 w-screen h-8 p-2 px-8 text-[#fff] bg-[#aaa] z-1000 justify-between'>
           <span 
             className='p-1 cursor-pointer' 
             onClick={() => {
               showInfo(1);
-              infoType===1 ? setInfoSideBar(!infoSidebar) : setInfoSideBar(infoSidebar);
+              setInfoSideBar(infoSidebar === 1 ? null : 1);
             }}
           >Business</span>
           <span>
             <span 
+              className='mr-5 inline-flex items-center cursor-pointer'
+              onClick={toggleDarkMode}
+            >
+              <FaYinYang />
+            </span>
+            <span 
               className='mr-5 inline-flex items-center cursor-pointer' 
               onClick={() => {
                 showInfo(2)
-                infoType===2 ? setInfoSideBar(!infoSidebar) : setInfoSideBar(infoSidebar);
+                setInfoSideBar(infoSidebar === 2 ? null : 2);
               }}>
               <FaRegQuestionCircle />
               <span className='p-1 pt-2'>FAQ</span>
@@ -55,7 +77,7 @@ function App() {
         </div>
         <div className="max-w-[90%] border-[4px] rounded-[4em] border-[#3d3d3d]">
           <div className="border-[2px] rounded-[3.7em] border-[#212121]">
-            <div className="max-w-full mx-auto bg-[#fef6e6] frameBorder relative border-[33px] rounded-[3.5em] border-[#3d3d3d]">
+            <div className="max-w-full mx-auto bg-[#fef6e6] frameBorder relative border-[33px] rounded-[3.5em] border-[#3d3d3d] dark:bg-[#454545]">
               <div className="absolute h-4 w-14 bg-[#434343] -top-[49px] left-8 -z-10 rounded-md"></div>
               <div className="absolute h-4 w-14 bg-[#434343] -top-[49px] left-28 -z-10 rounded-md"></div>
               <div className='absolute w-[33px] h-auto -left-[33px] top-[300px] justify-center'>
@@ -67,7 +89,7 @@ function App() {
               </div>
               
               <Routes>
-                  <Route path="/" element={ <PrivateRoute> <Home /> </PrivateRoute> } />
+                  <Route path="/" element={ <PrivateRoute> <Home dark={isDarkMode}/> </PrivateRoute> } />
                   <Route path="/admin" element={ <PrivateRoute> <Users /> </PrivateRoute> } />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
@@ -76,9 +98,10 @@ function App() {
               
               <InformationBar
                 show={infoSidebar}
-                setShow={() => setInfoSideBar(false)}
+                setShow={() => setInfoSideBar(null)}
                 type={infoType}
               />
+              {/* <Chart darkMode={isDarkMode} /> */}
             </div>
           </div>
         </div>

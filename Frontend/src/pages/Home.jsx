@@ -9,14 +9,16 @@ import { fetchWrapper, common } from '_helpers';
 
 import logo from '../_assets/logo.png';
 import subclient from '../_assets/sub-client.png';
+import darkSubclient from '../_assets/dark-sub-client.png';
 import exchange from '../_assets/history.png';
 import vector from '../_assets/vector.png';
+import darkVector from '../_assets/dark-vector.png';
 import settingIcon from '../_assets/setting.png';
 import power from '../_assets/log-out.png';
 
 let socket;
 
-function Home() {
+function Home(dark) {
   const dispatch = useDispatch();
   const { user: authUser } = useSelector(x => x.auth);
   const { users } = useSelector(x => x.users);
@@ -187,6 +189,7 @@ function Home() {
 
   
   let total = (reward.equity??0) + (hedge.equity??0) + selectedUser.current.wallet;
+  console.log('total', selectedUser)
   let profit = (total - selectedUser.current.investment) * selectedUser.current.grossProfit /100;
   let profit_rate = profit>0 && selectedUser.current.investment>0? 100 * profit / selectedUser.current.investment: 0;
 
@@ -198,15 +201,15 @@ function Home() {
           <div className="text-2xl bg-gradient-to-r from-[#9327EB] to-30% to-[#3B93EB] text-transparent bg-clip-text mb-4 font-light whitespace-nowrap font-syncopate-light flex justify-start items-center mt-5">
             <span className='text-[25px] font-syn-regular'>{ selectedUser.current.username }</span>
             <button className="ml-10 inline-flex items-center text-xs bg-gradient-to-r from-[#777] to-[#0094FF] from-10% to-100% text-transparent bg-clip-text" onClick={()=>logout()}>
-              Logout<img height={37} width={29} src={power} alt="power" />
+              Logout<img width={30} src={power} alt="power" />
             </button>
             <div className="flex justify-center items-center place-items-start cursor-pointer" 
                 onClick={() => {
                   setExchangeSideBar(!exchangeSidebar);
                 }}
               >
-                <span className="settingText ml-10 mr-2 text-xs s-text bg-gradient-to-r from-[#777777] to-[#7830AF] from-10% to-100% text-transparent bg-clip-text">exchange</span>
-                <img height={30} width={30} src={exchange} alt="exchange" />
+                <span className="settingText ml-10 mr-2 text-xs s-text bg-gradient-to-r from-[#777777] to-[#7830AF] from-10% to-100% text-transparent bg-clip-text dark:text-white dark:bg-none dark:font-normal">exchange</span>
+                <img width={26} src={exchange} alt="exchange" />
               </div>
           </div>
         </div>
@@ -217,15 +220,16 @@ function Home() {
             <HomeCell title="Hedge" value={hedge.login??0} headingColor={false} />
 
             <div className="col-span-2 w-[23rem] -mt-14 -mb-16 relative">
-              <img className="h-auto w-[90%] my-2 -mx-1" src ={vector} alt="" />
+              <img className="h-auto w-[90%] my-2 -mx-1 block dark:hidden" src ={vector} alt="" />
+              <img className="h-auto w-[90%] my-2 -mx-1 hidden dark:block" src ={darkVector} alt="" />
               <div className='absolute w-[88%]'>
                 <div className='flex w-full col-span-2'>
-                  <span className=" text-center mx-auto text-[10px] font-syn-regular text-[rgb(188,188,188)]">
+                  <span className=" text-center mx-auto text-[10px] font-syn-regular text-[rgb(188,188,188)] dark:text-dark-text">
                     wallet
                   </span>
                 </div>
                 <div className='flex w-full col-span-2'>
-                  <span className=" mx-auto text-lg text-[#81807f] font-syn-regular ">
+                  <span className=" mx-auto text-lg text-[#81807f] font-syn-regular dark:text-dark-text">
                     { common.numberFormat(selectedUser.current.wallet, 0) }
                   </span>
                 </div>
@@ -244,8 +248,8 @@ function Home() {
             <HomeCell title="Trades offen" value={reward.trades??0} headingColor={true} />
             <HomeCell title="Trades offen" value={hedge.trades??0} headingColor={false} />
 
-            <HomeCell title="free pip" value={reward.freepip?common.numberFormat(Math.round(reward.freepip)):0} active="true" headingColor={true} />
-            <HomeCell title="free pip" value={hedge.freepip?common.numberFormat(Math.round(hedge.freepip)):0} active="true" headingColor={false} />
+            <HomeCell title="free pip" value={reward.freepip?common.numberFormat(Math.round(reward.freepip)):0} active="true" headingColor={true} ownstyle2={'dark:text-[#E67406] dark:font-normal'}  />
+            <HomeCell title="free pip" value={hedge.freepip?common.numberFormat(Math.round(hedge.freepip)):0} active="true" headingColor={false} ownstyle2={'dark:text-[#F57B00] dark:font-normal'} />
 
             <HomeCell title="free margin" value={reward.freeMargin?common.numberFormat(reward.freeMargin):0} headingColor={true} />
             <HomeCell title="free margin" value={hedge.freeMargin?common.numberFormat(hedge.freeMargin):0} headingColor={false} />
@@ -265,17 +269,27 @@ function Home() {
             </div>
             
             <div>
-              <HomeCell title="PROFIT(APY)" value={profit>0?common.numberFormat(profit):0} ownstyle={"text-[#999] text-sm"} />
+              <HomeCell title="PROFIT" value={profit>0?common.numberFormat(profit):0} ownstyle={"text-[#999] text-sm"} />
+              <p className={`text-[#999]  font-syncopate-light text-xs`}>{common.numberFormat(profit_rate, 2)} %</p>
+            </div>
+
+            <div>
+              <HomeCell title="APR" value={profit>0?common.numberFormat(profit):0} ownstyle={"text-[#999] text-sm"} />
+              <p className={`text-[#999]  font-syncopate-light text-xs`}>{common.numberFormat(profit_rate, 2)} %</p>
+            </div>
+
+            <div>
+              <HomeCell title="APY" value={profit>0?common.numberFormat(profit):0} ownstyle={"text-[#999] text-sm"} />
               <p className={`text-[#999]  font-syncopate-light text-xs`}>{common.numberFormat(profit_rate, 2)} %</p>
             </div>
             
           </div>
         </div>
 
-        <div className="flex items-center lg:items-end xl:items-start flex-col h-full overflow-hidden min-h-[450px] place-items-end col-span-8 lg:col-span-5 pt-7">
+        <div className="flex items-center lg:items-end xl:items-start flex-col h-full overflow-hidden min-h-[450px] place-items-end col-span-8 lg:col-span-5 pt-7 ">
           {/* treadingView widget */}
           <div className='w-[587px] h-[426px] mx-auto'>
-            <Chart />
+            <Chart dark = {dark}/>
           </div>
 
           <div className="flex justify-center mt-auto w-full">
@@ -286,12 +300,13 @@ function Home() {
                     setClientSideBar(!clientSidebar);
                   }}
                 >
-                  <span className="settingText mx-5 s-text bg-gradient-to-r from-[#777777] to-[#7830AF] from-10% to-100% text-transparent bg-clip-text">sub-clients</span>
-                  <img height={47} width={47} src={subclient} alt="sub-client" />
+                  <span className="settingText mx-5 s-text  text-[rgb(87,87,87)] bg-clip-text dark:text-white dark:bg-none">sub-clients</span>
+                  <img className="block dark:hidden" width={26} src={subclient} alt="sub-client" />
+                  <img className="hidden dark:block" width={26} src={darkSubclient} alt="sub-client" />
                 </div>
                 <NavLink to="/admin" className="text-sm text-[rgb(87,87,87)] text-center ml-9 cursor-pointer inline-flex items-center">
-                  <span className="settingText mx-5 s-text bg-gradient-to-r from-[#777777] to-[#7830AF] from-10% to-100% text-transparent bg-clip-text">Admin</span>
-                  <img width={40} height={40} className="cursor-pointer" src={settingIcon} alt="second logo" />
+                  <span className="settingText mx-5 s-text  bg-clip-text dark:text-white dark:bg-none">Status: Admin</span>
+                  <img width={26}className="cursor-pointer" src={settingIcon} alt="second logo" />
                 </NavLink>
               </>
             ) : null}
@@ -308,6 +323,7 @@ function Home() {
         />
         <ExchangeSideBar
           show={exchangeSidebar}
+          dark={dark}
           setShow={() => setExchangeSideBar(false)}
         />
       </div>

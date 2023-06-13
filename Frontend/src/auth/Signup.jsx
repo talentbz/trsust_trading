@@ -48,8 +48,8 @@ function Signup() {
         <div className="grid place-items-center w-[70em] p-10 py-16">
             <Credentials>
                 <form onSubmit={handleSubmit(onSubmit)}
-                    className="bg-gradient-to-b from-[rgb(241,160,58)] from-10% to-100% to-[rgb(252,245,237)] w-full h-full flex justify-center items-center flex-col  px-10 py-8">
-                    <h1 className="text-center text-xl md:text-2xl leading-7 bg-gradient-to-r from-[#3b3a3a] to-[#db9235] from-10% to-100% text-transparent bg-clip-text">
+                    className="bg-gradient-to-b from-[rgb(241,160,58)] from-10% to-100% to-[rgb(252,245,237)] w-full h-full flex justify-center items-center flex-col  px-10 py-8 dark:to-[#454555] dark:from-0 dark:to-90%">
+                    <h1 className="text-center text-xl md:text-2xl leading-7 bg-gradient-to-r from-[#3b3a3a] to-[#db9235] from-10% to-100% text-transparent bg-clip-text dark:text-white">
                     SIgn up
                     </h1>
 
@@ -62,7 +62,7 @@ function Signup() {
                     <div className="mt-3 md:mt-10 w-full flex justify-center items-center flex-col">
                     <input
                         required
-                        className="bg-transparent border-b-2 border-black outline-none p-1 md:p-2 text-sm md:text-base font-syncopate-light text-white placeholder:text-[rgb(137,136,136)] w-full md:w-auto"
+                        className="bg-transparent border-b-2 border-black outline-none p-1 md:p-2 text-sm md:text-base font-syncopate-light text-white placeholder:text-[rgb(137,136,136)] w-full md:w-auto dark:placeholder:text-[#fff] dark:border-white"
                         name="username" 
                         type="text" 
                         {...register('username')}
@@ -72,7 +72,7 @@ function Signup() {
                     <div className="text-red-500 text-xs h-3">{errors.username?.message}</div>
                     <input
                         required
-                        className="bg-transparent border-b-2 border-black outline-none p-1 md:p-2 text-sm md:text-base font-syncopate-light text-white placeholder:text-[rgb(137,136,136)] w-full md:w-auto"
+                        className="bg-transparent border-b-2 border-black outline-none p-1 md:p-2 text-sm md:text-base font-syncopate-light text-white placeholder:text-[rgb(137,136,136)] w-full md:w-auto dark:placeholder:text-[#fff] dark:border-white"
                         name="email" 
                         type="email" 
                         {...register('email')}
@@ -82,7 +82,7 @@ function Signup() {
                     <div className="text-red-500 text-xs h-3">{errors.email?.message}</div>
                     <input
                         required
-                        className="bg-transparent border-b-2 border-black outline-none p-1 md:p-2 text-sm md:text-base font-syncopate-light text-white placeholder:text-[rgb(137,136,136)] mt-2 w-full md:w-auto"
+                        className="bg-transparent border-b-2 border-black outline-none p-1 md:p-2 text-sm md:text-base font-syncopate-light text-white placeholder:text-[rgb(137,136,136)] mt-2 w-full md:w-auto dark:placeholder:text-[#fff] dark:border-white"
                         name="password" 
                         type="password" 
                         {...register('password')}
@@ -92,7 +92,7 @@ function Signup() {
                     <div className="text-red-500 text-xs h-3">{errors.password?.message}</div>
                     <input
                         required
-                        className="bg-transparent border-b-2 border-black outline-none p-1 md:p-2 text-sm md:text-base font-syncopate-light text-white placeholder:text-[rgb(137,136,136)] mt-2 w-full md:w-auto"
+                        className="bg-transparent border-b-2 border-black outline-none p-1 md:p-2 text-sm md:text-base font-syncopate-light text-white placeholder:text-[rgb(137,136,136)] mt-2 w-full md:w-auto dark:placeholder:text-[#fff] dark:border-white"
                         name="repassword" 
                         type="password" 
                         {...register('repassword')}
@@ -105,7 +105,7 @@ function Signup() {
                     <div className=" text-center">
                         <div className="my-4">
                             <input type="checkbox" name="confirm" id="confirm" />{" "}
-                            <span className="text-[rgb(105,105,105) font-syncopate-light text-sm">
+                            <span className="text-[rgb(105,105,105) font-syncopate-light text-sm dark:text-white">
                             {" "}
                             I accept Terms of Service *
                             </span>
@@ -119,7 +119,7 @@ function Signup() {
                     </div>
 
                     <div className="mt-3 text-center">
-                    <span className="text-[rgb(105,105,105) font-syncopate-light text-sm">
+                    <span className="text-[rgb(105,105,105) font-syncopate-light text-sm dark:text-white">
                         Already have an account?{" "}
                     </span>
                     <NavLink

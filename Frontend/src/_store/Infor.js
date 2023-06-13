@@ -4,6 +4,10 @@ const data = {
     "about": "Als Schweizer Non-Profit-Verein namens Dualnet, ist unser Ziel, die Abhängigkeiten in der Finanz- und Börsenwelt zu reduzieren und die notwendigen Verknüpfungen und Dienstleistungen die wir brauchen, möglichst zu dezentralisieren. \n\n Wir setzen auf marktneutralen Handel und verfolgen keine spekulativen Strategien, um Gewinne zu erzielen. \n\n Unser Fokus liegt darauf, Brücken zwischen der Fiat-Welt und der Kryptowelt zu bauen. \n\n Das nächste Ziel ist es, einen 100% Marktneutralen, gehedgeten Margin Handel in der Kryptowelt zu vernetzen. genau wie bei forex entsteht in unserem system kein raum für spekulanten, wir hedgen die investment um nur mit gehedgetem leverage rewards provit zu erzeugen. \n\n Wir laden jeden ein, sich von uns inspirieren zu lassen oder sogar Teil unseres Teams zu werden, um gemeinsam neue Wege zu beschreiten. \n\n Auch wenn wir das Rad nicht neu erfinden, glauben wir daran, dass wir die Art der Reifen verbessern können.",
     "faqs": [
         {
+            "question": "wie kann ich den dark - light modus wechseln?",
+            "answer": "Klick am oberen rechten bildschirmrand auf das symbol mit halbkreis."
+        },
+        {
             "question": "Was ist ein Reward Konto?",
             "answer": "Ein Konto bei einem Broker, der Zinsen für offene Positionen über Nacht gutschreibt. Sogenannte Swaps (berechnet nach dem Tom Next-Kurs."
         },
@@ -42,7 +46,7 @@ const data = {
         {
             "question": "Wie berechnet sich der Profit APY?",
             "answer": "(Nerd Antwort) \n Der Profit APY (Annual Percentage Yield) ist eine Maßeinheit, die verwendet wird, um das jährliche Wachstum eines Investments auszudrücken. Um den Profit APY zu berechnen, benötigt man die folgenden Informationen: \n Den anfänglichen Investitionsbetrag \n Den Endbetrag des Investments \n Die Anzahl der Tage, an denen das Investment gehalten wurde \n Die Formel zur Berechnung des Profit APY lautet: \n Profit APY = ((Endbetrag / Anfangsbetrag) ^ (365 / Anzahl der Tage)) - 1 \n  Wenn man beispielsweise 10.000 Euro in ein Investment steckt und am Ende des Jahres 11.000 Euro erhält, und man das Investment 180 Tage lang gehalten hat, dann lautet die Berechnung: \n Profit APY = ((11.000 Euro / 10.000 Euro) ^ (365 / 180)) - 1 = 0,2154 oder 21,54% \n Das bedeutet, dass das Investment in diesem Beispiel im Jahresvergleich um 21,54% gewachsen ist. \n Es ist wichtig zu beachten, dass der Profit APY nur eine Schätzung ist und dass die tatsächlichen Renditen von verschiedenen Faktoren wie Marktschwankungen und Gebühren abhängen können."
-        }
+        },
     ]
 }
 

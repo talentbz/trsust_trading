@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, memo } from 'react';
 
-export const Chart = memo(() => {
-  const contariner = useRef();
-
+export const Chart = memo((dark) => {
+  const container = useRef();
+  const darkMode = dark.dark.dark;
+  
   useEffect(
     () => {
+      const colorTheme = darkMode  ? 'dark' : 'light';
+      const backgroundColor = darkMode  ? '#454545' : '#fef6e6';
       const script = document.createElement("script");
       script.src = "https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js";
       script.type = "text/javascript";
@@ -32,7 +35,7 @@ export const Chart = memo(() => {
           "width": "100%",
           "height": "100%",
           "locale": "de_DE",
-          "colorTheme": "light",
+          "colorTheme": "${colorTheme}",
           "autosize": true,
           "showVolume": false,
           "showMA": false,
@@ -50,7 +53,7 @@ export const Chart = memo(() => {
           "maLineColor": "#2962FF",
           "maLineWidth": 1,
           "maLength": 9,
-          "backgroundColor": "#fef6e6",
+          "backgroundColor": "${backgroundColor}",
           "lineWidth": 2,
           "lineType": 0,
           "dateRanges": [
@@ -60,14 +63,14 @@ export const Chart = memo(() => {
             "12m|1W"
           ]
         }`;
-        
-        contariner.current.appendChild(script);
+        container.current.innerHTML = '';
+        container.current.appendChild(script);
     },
-    []
+    [darkMode]
   );
 
   return (
-    <div className="tradingview-widget-container" ref={contariner}>
+    <div className="tradingview-widget-container" ref={container}>
       <div className="tradingview-widget-container__widget"></div>
     </div>
   );

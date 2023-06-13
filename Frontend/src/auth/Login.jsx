@@ -42,8 +42,8 @@ function Login() {
         <Credentials>
           <form
             method="post" onSubmit={handleSubmit(onSubmit)}
-            className="bg-gradient-to-b from-[rgb(160,91,255)] from-10% to-100% to-[rgb(215,215,216)] w-auto h-full flex justify-center items-center flex-col px-10 py-8">
-            <h1 className="text-center text-2xl leading-7 whitespace-nowrap bg-gradient-to-r from-[#483e4e] to-[#7df04a] from-10% to-100% text-transparent bg-clip-text">
+            className="bg-gradient-to-b from-[rgb(160,91,255)] from-10% to-100% to-[rgb(215,215,216)] w-auto h-full flex justify-center items-center flex-col px-10 py-8 dark:from-[rgb(147, 39, 232)] dark:to-[#454555] dark:from-0 dark:to-90%">
+            <h1 className="text-center text-2xl leading-7 whitespace-nowrap bg-gradient-to-r from-[#483e4e] to-[#7df04a] from-10% to-100% text-transparent bg-clip-text dark:from-[#3A3737] dark:to-[#44AAFF]">
               Welcome into <br /> dualnet
             </h1>
 
@@ -56,7 +56,7 @@ function Login() {
 
             <div className="mt-10 w-full flex justify-center items-center flex-col">
               <input
-              className={`bg-transparent border-b-[1px] border-black font-syncopate-light outline-none p-2 text-lg text-white placeholder:text-[rgb(107,102,109)] w-auto ${errors.username ? 'is-invalid' : ''}`}
+              className={`bg-transparent border-b-[1px] border-black font-syncopate-light outline-none p-2 text-lg text-white placeholder:text-[rgb(107,102,109)] w-auto ${errors.username ? 'is-invalid' : ''} dark:placeholder:text-[#fff] dark:border-white`}
                 type="email"
                 name="email"
                 id="email"
@@ -66,7 +66,7 @@ function Login() {
               <div className="text-red-500 text-sm h-3">{errors.email?.message}</div>
               <div className='relative'>
                 <input
-                  className={`bg-transparent border-b-[1px] border-black outline-none p-2 text-lg font-syncopate-light text-white placeholder:text-[rgb(107,102,109)] mt-5 w-auto ${errors.password ? 'is-invalid' : ''}`}
+                  className={`bg-transparent border-b-[1px] border-black outline-none p-2 text-lg font-syncopate-light text-white placeholder:text-[rgb(107,102,109)] mt-5 w-auto ${errors.password ? 'is-invalid' : ''} dark:placeholder:text-[#fff] dark:border-white`}
                   type={isEye?"password": "text"}
                   name="password"
                   id="password"
@@ -88,7 +88,7 @@ function Login() {
             </div>
 
             <NavLink
-              className="text-base text-[rgb(135,25,165)] mt-5 text-center whitespace-nowrap"
+              className="text-base text-[rgb(135,25,165)] mt-5 text-center whitespace-nowrap dark:text-white"
               to="/signup">
               not a member? Sign up now!
             </NavLink>

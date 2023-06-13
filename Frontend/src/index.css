@@ -40,3 +40,8 @@ body{
     background-color: #aaa;
     margin-top: 5px;
 }
+
+/* dark mode */
+.dark .tradingview-widget-container iframe .tv-widget-chart {
+    background: #454545;
+}

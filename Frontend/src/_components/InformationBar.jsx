@@ -14,17 +14,16 @@ function InformationBar({show, setShow, type}) {
   useEffect(() => {
     setDataList(data);
   },[])
-  console.log(type)
   return (
-    <div className={`${show? "right-0" : "hidden"} bg-[#fef6e6] border-[1.5px] w-[680px] rounded-l-3xl px-5 py-3 border-gray-300 z-30 transition-transform text-sm sidebar`}>
+    <div className={`${show? "right-0" : "hidden"} bg-[#fef6e6] border-[1.5px] w-[680px] rounded-l-3xl px-5 py-3 border-gray-300 z-30 transition-transform text-sm sidebar dark:bg-[#454545] dark:border-[#6D6D6D] dark:border-r-0`}>
       <div className="flex items-center mt-5">
-        <span onClick={()=>setShow(false)} className="float-left cursor-pointer ml-3"><FaRegTimesCircle className="h-6 w-6 text-gray-300"/></span>
-        <span className="text-xl bg-gradient-to-r from-[#9327EB] to-30% to-[#3B93EB] text-transparent bg-clip-text font-light whitespace-nowrap font-syncopate-light text-center mx-auto">{type === 1? 'Business': `FAQ'S`}</span>
+        <span onClick={()=>setShow(null)} className="float-left cursor-pointer ml-3"><FaRegTimesCircle className="h-6 w-6 text-gray-300 dark:text-dark-text"/></span>
+        <span className="text-xl bg-gradient-to-r from-[#9327EB] to-30% to-[#3B93EB] text-transparent bg-clip-text font-light whitespace-nowrap font-syncopate-light text-center mx-auto dark:text-dark-text dark:bg-none">{type === 1? 'Business': `FAQ'S`}</span>
       </div>
       <div className="h-[538px] overflow-y-auto">
       {type === 1? (
         <>
-          <p className="text-[#555] max-w-xl mx-auto mt-8 text-sm font-syn-regular">
+          <p className="text-[#555] max-w-xl mx-auto mt-8 text-sm font-syn-regular dark:text-dark-text">
             {dataList?.about && dataList.about.split('\n').map((paragraph, paragraphIndex) => (
               <React.Fragment key={paragraphIndex}>
                 {paragraph}
@@ -51,12 +50,12 @@ function InformationBar({show, setShow, type}) {
                         <FaPlus className="h-3 w-3 text-[#3268FD]" />
                       )}
                     </span>
-                    <span className="ml-3 text-[#232323] font-bold font-syn-regular">
+                    <span className="ml-3 text-[#232323] font-bold font-syn-regular dark:text-dark-text">
                       {accordion.question}
                     </span>
                   </div>
                   {activeAccordion === index && (
-                    <p className="text-sm mt-3 font-normal font-syn-regular text-[#232323] animate-fadeIn">
+                    <p className="text-sm mt-3 font-normal font-syn-regular text-[#232323] animate-fadeIn dark:text-dark-text">
                       {accordion.answer.split('\n').map((paragraph, paragraphIndex) => (
                         <React.Fragment key={paragraphIndex}>
                           {paragraph}
