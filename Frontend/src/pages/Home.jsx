@@ -208,7 +208,7 @@ function Home(dark) {
                   setExchangeSideBar(!exchangeSidebar);
                 }}
               >
-                <span className="settingText ml-10 mr-2 text-xs s-text bg-gradient-to-r from-[#777777] to-[#7830AF] from-10% to-100% text-transparent bg-clip-text dark:text-white dark:bg-none dark:font-normal">exchange</span>
+                <span className="settingText ml-10 mr-2 text-[11px] s-text bg-gradient-to-r from-[#777777] to-[#7830AF] from-10% to-100% text-transparent bg-clip-text dark:text-[#f4ebdb] dark:bg-none dark:font-normal">exchange</span>
                 <img width={26} src={exchange} alt="exchange" />
               </div>
           </div>
@@ -248,8 +248,8 @@ function Home(dark) {
             <HomeCell title="Trades offen" value={reward.trades??0} headingColor={true} />
             <HomeCell title="Trades offen" value={hedge.trades??0} headingColor={false} />
 
-            <HomeCell title="free pip" value={reward.freepip?common.numberFormat(Math.round(reward.freepip)):0} active="true" headingColor={true} ownstyle2={'dark:text-[#E67406] dark:font-normal'}  />
-            <HomeCell title="free pip" value={hedge.freepip?common.numberFormat(Math.round(hedge.freepip)):0} active="true" headingColor={false} ownstyle2={'dark:text-[#F57B00] dark:font-normal'} />
+            <HomeCell title="free pip" value={reward.freepip?common.numberFormat(Math.round(reward.freepip)):0} active="true" headingColor={true} ownstyle2={'text-[18px]'}  />
+            <HomeCell title="free pip" value={hedge.freepip?common.numberFormat(Math.round(hedge.freepip)):0} active="true" headingColor={false} ownstyle2={'text-[18px]'} />
 
             <HomeCell title="free margin" value={reward.freeMargin?common.numberFormat(reward.freeMargin):0} headingColor={true} />
             <HomeCell title="free margin" value={hedge.freeMargin?common.numberFormat(hedge.freeMargin):0} headingColor={false} />
@@ -264,15 +264,15 @@ function Home(dark) {
 
           <div className="flex gap-16 mt-5 justify-between">
             <div>
-              <HomeCell title="INVESTMENT" value={common.numberFormat(selectedUser.current.investment || 0)} ownstyle={"text-[#999] text-sm"} />
-              <p className={`text-[#999]  font-syncopate-light text-xs`}>{'Since: ' + selectedUser.current.beginData??'Not set'}</p>
+              <HomeCell title="INVESTMENT" value={common.numberFormat(selectedUser.current.investment || 0)} ownstyle={"text-[11px]"} />
+              <p className={`font-syn-regular text-[12px] dark:text-dark-text`}>{'Since: ' + selectedUser.current.beginData??'Not set'}</p>
             </div>
             
             <div>
-              <HomeCell title="PROFIT" value={profit>0?common.numberFormat(profit):0} ownstyle={"text-[#999] text-sm"} />
-              <p className={`text-[#999]  font-syncopate-light text-xs`}>{common.numberFormat(profit_rate, 2)} %</p>
+              <HomeCell title="PROFIT" value={profit>0?common.numberFormat(profit):0} ownstyle={"text-[11px]"} />
+              <p className={`font-syn-regular text-[12px] dark:text-dark-text`}>{common.numberFormat(profit_rate, 2)} %</p>
             </div>
-
+{/* 
             <div>
               <HomeCell title="APR" value={profit>0?common.numberFormat(profit):0} ownstyle={"text-[#999] text-sm"} />
               <p className={`text-[#999]  font-syncopate-light text-xs`}>{common.numberFormat(profit_rate, 2)} %</p>
@@ -281,7 +281,7 @@ function Home(dark) {
             <div>
               <HomeCell title="APY" value={profit>0?common.numberFormat(profit):0} ownstyle={"text-[#999] text-sm"} />
               <p className={`text-[#999]  font-syncopate-light text-xs`}>{common.numberFormat(profit_rate, 2)} %</p>
-            </div>
+            </div> */}
             
           </div>
         </div>
@@ -300,12 +300,12 @@ function Home(dark) {
                     setClientSideBar(!clientSidebar);
                   }}
                 >
-                  <span className="settingText mx-5 s-text  text-[rgb(87,87,87)] bg-clip-text dark:text-white dark:bg-none">sub-clients</span>
+                  <span className="settingText mx-5 text-[11px]  text-[rgb(87,87,87)] bg-clip-text dark:text-[#f4ebdb] dark:bg-none">sub-clients</span>
                   <img className="block dark:hidden" width={26} src={subclient} alt="sub-client" />
                   <img className="hidden dark:block" width={26} src={darkSubclient} alt="sub-client" />
                 </div>
                 <NavLink to="/admin" className="text-sm text-[rgb(87,87,87)] text-center ml-9 cursor-pointer inline-flex items-center">
-                  <span className="settingText mx-5 s-text  bg-clip-text dark:text-white dark:bg-none">Status: Admin</span>
+                  <span className="settingText mx-5 text-[11px]  bg-clip-text dark:text-[#f4ebdb] dark:bg-none">Status: Admin</span>
                   <img width={26}className="cursor-pointer" src={settingIcon} alt="second logo" />
                 </NavLink>
               </>

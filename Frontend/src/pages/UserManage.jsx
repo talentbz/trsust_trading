@@ -74,7 +74,7 @@ function Users() {
                 <div className="grid grid-cols-1 mt-8 w-full">
                 { 
                     usersDetail && usersDetail.rows && usersDetail.rows.map((e) => {
-                        return <AdminRow editUser={editUser} deleteUser={deleteUser} key={e.id} data={e} />;
+                        return <AdminRow editUser={editUser} deleteUser={deleteUser} key={e.id} data={e} details={usersDetail.rows}/>;
                     })
                 }
                 </div>
