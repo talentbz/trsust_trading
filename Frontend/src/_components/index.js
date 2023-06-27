@@ -9,3 +9,7 @@ export * from './SettingSideBar';
 export * from './TradingViewChart';
 export * from './InformationBar';
 export * from './ExchangeSideBar';
+export * from './WalletSideBar';
+export * from './StepForm/Step1';
+export * from './StepForm/Step2';
+export * from './StepForm/Step3';

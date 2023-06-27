@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import io from 'socket.io-client'
 
-import { ClientSideBar, ExchangeSideBar, HomeCell, Chart } from "_components";
+import { ClientSideBar, ExchangeSideBar, HomeCell, Chart, WalletSideBar } from "_components";
 import { userActions, authActions } from '_store';
 import { fetchWrapper, common } from '_helpers';
 
@@ -26,6 +26,7 @@ function Home(dark) {
 
   const [clientSidebar, setClientSideBar] = useState(false);
   const [exchangeSidebar, setExchangeSideBar] = useState(false);
+  const [walletSidebar, setWalletSideBar] = useState(false);
   const [reward, setReward] = useState('');
   const [hedge, setHedge] = useState('');
   const [seluserid, setSelUserid] = useState(authUser[1]?.id || 0);
@@ -211,6 +212,14 @@ function Home(dark) {
                 <span className="settingText ml-10 mr-2 text-[11px] s-text bg-gradient-to-r from-[#777777] to-[#7830AF] from-10% to-100% text-transparent bg-clip-text dark:text-[#f4ebdb] dark:bg-none dark:font-normal">exchange</span>
                 <img width={26} src={exchange} alt="exchange" />
               </div>
+              <div className="flex justify-center items-center place-items-start cursor-pointer" 
+                onClick={() => {
+                  setWalletSideBar(!walletSidebar);
+                }}
+              >
+                <span className="settingText ml-10 mr-2 text-[11px] s-text bg-gradient-to-r from-[#777777] to-[#7830AF] from-10% to-100% text-transparent bg-clip-text dark:text-[#f4ebdb] dark:bg-none dark:font-normal">wallet</span>
+                <img width={26} src={exchange} alt="exchange" />
+              </div>
           </div>
         </div>
 
@@ -325,6 +334,11 @@ function Home(dark) {
           show={exchangeSidebar}
           dark={dark}
           setShow={() => setExchangeSideBar(false)}
+        />
+        <WalletSideBar
+          show={walletSidebar}
+          dark={dark}
+          setShow={() => setWalletSideBar(false)}
         />
       </div>
     </div>

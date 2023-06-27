@@ -8,6 +8,10 @@ module.exports = {
       colors: {
         'dark-text': 'rgba(255, 255, 255, 0.5)',
       },
+      fontFamily: {
+        'arrial': ['Arial'],
+        'roboto': ['Roboto']
+      },
     },
   },
   plugins: [],

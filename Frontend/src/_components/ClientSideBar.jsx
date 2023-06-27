@@ -11,14 +11,13 @@ function ClientSideBar({show, setShow, selectedUserId, userList, allInfo, onSele
     Infinity
   );
   
-  // Sort the userList array by account_no
+  // Sort the userList array by account_no 
   const sortedUserList = Array.from(userList).sort((a, b) => {
     const accountNoA = Number(a.account_no);
     const accountNoB = Number(b.account_no);
     return accountNoA - accountNoB;
   });
 
-  console.log('sortedUserList', sortedUserList)
   return (
     <div className={`${show ? "right-0" : "hidden"} bg-[#fef6e6] w-[680px] border-[1.5px]  rounded-l-3xl px-5 py-3 border-gray-300 z-30 transition-transform text-sm sidebar dark:bg-[#454545] dark:border-[#6D6D6D]`}>
       <h1 className="text-xl mb-5 text-[rgb(143,143,143)] text-center dark:text-dark-text">Sub-Clients</h1>

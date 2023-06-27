@@ -11,6 +11,9 @@
     src: url(../public/fonts/Syncopate-Regular.ttf);
 }
 
+@import url('https://fonts.cdnfonts.com/css/ibm-plex-sans');
+@import url('https://fonts.cdnfonts.com/css/inter');
+
 body{
     font-family: syncopate-bold;
 }
@@ -22,6 +25,22 @@ body{
 .font-syn-bold {
     font-family: syncopate-bold;
 }
+
+.font-ibm{
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+.font-inter{
+    font-family: 'Inter', sans-serif;
+}
+.scroll-bar::-webkit-scrollbar {
+    width: 10px;
+    background-color: darkgrey;
+    border-radius: 100px;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+    background: #6D6D6D;
+    border-radius: 100px;
+  }
 
 .sidebar{
     position: absolute;
@@ -40,7 +59,9 @@ body{
     background-color: #aaa;
     margin-top: 5px;
 }
-
+.border-height {
+    border-top: 0.3px solid transparent;
+}
 /* dark mode */
 .dark .tradingview-widget-container iframe .tv-widget-chart {
     background: #454545;
