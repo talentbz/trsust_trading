@@ -13,3 +13,4 @@ export * from './WalletSideBar';
 export * from './StepForm/Step1';
 export * from './StepForm/Step2';
 export * from './StepForm/Step3';
+export * from './StepForm/Step4';

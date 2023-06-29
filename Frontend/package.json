@@ -15,6 +15,7 @@
         "socket.io-client": "^4.5.4",
         "state-pool": "^0.10.0",
         "sweetalert2": "^11.7.5",
+        "web3": "^1.10.0",
         "yup": "^0.32.11"
     },
     "scripts": {
