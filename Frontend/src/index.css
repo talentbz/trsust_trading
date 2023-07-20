@@ -66,3 +66,9 @@ body{
 .dark .tradingview-widget-container iframe .tv-widget-chart {
     background: #454545;
 }
+@media only screen and (max-width: 425px) {
+    .sidebar{
+        top: 58%;
+        width: 93%;
+    }
+  }

@@ -39,8 +39,8 @@ function App() {
     };
     
     return (
-      <div className={`grid place-items-center pt-10 h-screen bg-[#aaa] ${isDarkMode ? 'dark' : 'light'}`}>
-        <div className='fixed md:hidden lg:flex top-0 w-screen h-8 p-2 px-8 text-[#fff] bg-[#aaa] z-1000 justify-between'>
+      <div className={`bg-[#fef6e6] block md:grid place-items-center md:pt-10 h-screen md:bg-[#aaa] ${isDarkMode ? 'dark' : 'light'}`}>
+        <div className='hidden fixed lg:flex top-0 w-screen h-8 p-2 px-8 text-[#fff] bg-[#aaa] z-1000 justify-between'>
           <span 
             className='p-1 cursor-pointer' 
             onClick={() => {
@@ -75,12 +75,12 @@ function App() {
             </span>
           </span>
         </div>
-        <div className="max-w-[90%] border-[4px] rounded-[4em] border-[#3d3d3d]">
-          <div className="border-[2px] rounded-[3.7em] border-[#212121]">
-            <div className="max-w-full mx-auto bg-[#fef6e6] frameBorder relative border-[33px] rounded-[3.5em] border-[#3d3d3d] dark:bg-[#454545]">
-              <div className="absolute h-4 w-14 bg-[#434343] -top-[49px] left-8 -z-10 rounded-md"></div>
-              <div className="absolute h-4 w-14 bg-[#434343] -top-[49px] left-28 -z-10 rounded-md"></div>
-              <div className='absolute w-[33px] h-auto -left-[33px] top-[300px] justify-center'>
+        <div className="md:max-w-[90%] md:border-[4px] md:rounded-[4em] md:border-[#3d3d3d]">
+          <div className="md:border-[2px] md:rounded-[3.7em] md:border-[#212121]">
+            <div className="max-w-full mx-auto bg-[#fef6e6] frameBorder relative md:border-[33px] md:rounded-[3.5em] md:border-[#3d3d3d] dark:bg-[#454545]">
+              <div className="hidden absolute h-4 w-14 bg-[#434343] -top-[49px] left-8 -z-10 rounded-md"></div>
+              <div className="hidden absolute h-4 w-14 bg-[#434343] -top-[49px] left-28 -z-10 rounded-md"></div>
+              <div className='hidden md:block absolute w-[33px] h-auto -left-[33px] top-[300px] justify-center'>
                 <div className=" h-[15px] w-[15px] bg-[#212121] mx-auto mb-6 rounded-full"></div>
                 <div className=" h-[4px]  w-[4px]  bg-[#212121] mx-auto mb-6 rounded-full"></div>
                 <div className=" h-[6px]  w-[6px]  bg-[#212121] mx-auto mb-6 rounded-full"></div>

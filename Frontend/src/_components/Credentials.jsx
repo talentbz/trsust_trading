@@ -3,7 +3,7 @@ import logo from '../_assets/logo.png';
 
 function Credentials({children}) {
   return (
-    <div className="flex justify-center items-center flex-col w-[85%]">
+    <div className="flex justify-center items-center flex-col md:w-[85%]">
       <div className="flex justify-start items-start w-full">
         <img width={96} height={96} className="mb-5" src={logo} alt="logo" />
       </div>

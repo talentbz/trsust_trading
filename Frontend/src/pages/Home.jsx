@@ -197,14 +197,14 @@ function Home(dark) {
   return (
     <div className="w-full flex justify-center items-start lg:items-start p-5">
       <div className="grid grid-cols-8 h-auto w-full gap-10 lg:gap-0">
-        <div className="col-span-8 ml-10">
+        <div className="col-span-8 md:ml-10">
           <img height={95} width={95} src={logo} alt="logo" />
           <div className="text-2xl bg-gradient-to-r from-[#9327EB] to-30% to-[#3B93EB] text-transparent bg-clip-text mb-4 font-light whitespace-nowrap font-syncopate-light flex justify-start items-center mt-5">
             <span className='text-[25px] font-syn-regular'>{ selectedUser.current.username }</span>
-            <button className="ml-10 inline-flex items-center text-xs bg-gradient-to-r from-[#777] to-[#0094FF] from-10% to-100% text-transparent bg-clip-text" onClick={()=>logout()}>
+            <button className="hidden ml-10 md:inline-flex items-center text-xs bg-gradient-to-r from-[#777] to-[#0094FF] from-10% to-100% text-transparent bg-clip-text" onClick={()=>logout()}>
               Logout<img width={30} src={power} alt="power" />
             </button>
-            <div className="flex justify-center items-center place-items-start cursor-pointer" 
+            <div className="hidden md:flex justify-center items-center place-items-start cursor-pointer" 
                 onClick={() => {
                   setExchangeSideBar(!exchangeSidebar);
                 }}
@@ -212,7 +212,7 @@ function Home(dark) {
                 <span className="settingText ml-10 mr-2 text-[11px] s-text bg-gradient-to-r from-[#777777] to-[#7830AF] from-10% to-100% text-transparent bg-clip-text dark:text-[#f4ebdb] dark:bg-none dark:font-normal">exchange</span>
                 <img width={26} src={exchange} alt="exchange" />
               </div>
-              <div className="flex justify-center items-center place-items-start cursor-pointer" 
+              <div className="hidden md:flex justify-center items-center place-items-start cursor-pointer" 
                 onClick={() => {
                   setWalletSideBar(!walletSidebar);
                 }}
@@ -222,8 +222,9 @@ function Home(dark) {
               </div>
           </div>
         </div>
-
-        <div className="lg:pt-8 ml-10 flex items-center lg:items-start flex-col overflow-hidden col-span-8 lg:col-span-3">
+        
+        {/* pc version */}
+        <div className="hidden lg:pt-8 ml-10 md:flex items-center lg:items-start flex-col overflow-hidden col-span-8 lg:col-span-3">
           <div className="grid grid-cols-2 gap-x-20 gap-y-3">
             <HomeCell title="Reward" value={reward.login??0} headingColor={true} />
             <HomeCell title="Hedge" value={hedge.login??0} headingColor={false} />
@@ -294,14 +295,84 @@ function Home(dark) {
             
           </div>
         </div>
+        
+        {/* mobile version */}
+        <div className="md:hidden lg:pt-8 flex items-center lg:items-start flex-col overflow-hidden col-span-8 lg:col-span-3">
+          <div className="grid grid-cols-2 gap-x-20 gap-y-3 border-b pb-5  w-full">
+            <HomeCell title="Reward" value={reward.login??0} headingColor={true} />
+            <HomeCell title="Hedge" value={hedge.login??0} headingColor={false} />
 
-        <div className="flex items-center lg:items-end xl:items-start flex-col h-full overflow-hidden min-h-[450px] place-items-end col-span-8 lg:col-span-5 pt-7 ">
-          {/* treadingView widget */}
-          <div className='w-[587px] h-[426px] mx-auto'>
-            <Chart dark = {dark}/>
+            <HomeCell title="Lot offen" value={reward.sumlot?common.numberFormat(reward.sumlot, 2):0} headingColor={true} />
+            <HomeCell title="Lot offen" value={hedge.sumlot?common.numberFormat(hedge.sumlot, 2):0} headingColor={false} />
+
+            <HomeCell title="free pip" value={reward.freepip?common.numberFormat(Math.round(reward.freepip)):0} active="true" headingColor={true} ownstyle2={'text-[18px]'}  />
+            <HomeCell title="free pip" value={hedge.freepip?common.numberFormat(Math.round(hedge.freepip)):0} active="true" headingColor={false} ownstyle2={'text-[18px]'} /> 
           </div>
 
-          <div className="flex justify-center mt-auto w-full">
+          <div className="flex flex-col mt-5 gap-5 w-full">
+            <div>
+              <div>
+                <p className="text-[12px] w-full h-full bg-gradient-to-r from-purple-600 via-blue-400 to-green-400 text-transparent bg-clip-text">
+                  INVESTMENT
+                </p>
+              </div>
+              <div className='flex'>
+                <p className='text-[#6a6661] dark:text-dark-text font-syn-regular text-[18px]'>{common.numberFormat(selectedUser.current.investment || 0)}</p>
+              </div>
+            </div>
+            <div className=''>
+              <div>
+                <p className="text-[12px] w-full h-full bg-gradient-to-r from-purple-600 via-blue-400 to-green-400 text-transparent bg-clip-text">
+                  PROFIT
+                </p>
+              </div>
+              <div className='flex'>
+                <p className='text-[#6a6661] dark:text-dark-text font-syn-regular text-[18px]'>{profit>0?common.numberFormat(profit):0}</p>
+                <p className='text-[#6a6661] dark:text-dark-text font-syn-regular text-[18px] mx-3'>/</p>
+                <p className="text-[red] font-syn-regular text-[18px]">{common.numberFormat(profit_rate, 2)} %</p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <p className="text-[12px] w-full h-full bg-gradient-to-r from-purple-600 via-blue-400 to-green-400 text-transparent bg-clip-text">
+                  Since
+                </p>
+              </div>
+              <div className='flex'>
+                <p className='text-[#6a6661] dark:text-dark-text font-syn-regular text-[18px]'>{selectedUser.current.beginData??'Not set'}</p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <p className="text-[12px] w-full h-full bg-gradient-to-r from-purple-600 via-blue-400 to-green-400 text-transparent bg-clip-text">
+                  Totally Assets
+                </p>
+              </div>
+              <div className='flex'>
+                <p className='text-[#6a6661] dark:text-dark-text font-syn-regular text-[18px]'>{common.numberFormat(total)}</p>
+              </div>
+            </div>
+{/* 
+            <div>
+              <HomeCell title="APR" value={profit>0?common.numberFormat(profit):0} ownstyle={"text-[#999] text-sm"} />
+              <p className={`text-[#999]  font-syncopate-light text-xs`}>{common.numberFormat(profit_rate, 2)} %</p>
+            </div>
+
+            <div>
+              <HomeCell title="APY" value={profit>0?common.numberFormat(profit):0} ownstyle={"text-[#999] text-sm"} />
+              <p className={`text-[#999]  font-syncopate-light text-xs`}>{common.numberFormat(profit_rate, 2)} %</p>
+            </div> */}
+            
+          </div>
+        </div>
+        <div className="flex items-center lg:items-end xl:items-start flex-col h-full overflow-hidden md:min-h-[450px] place-items-end col-span-8 lg:col-span-5 pt-7 ">
+          {/* treadingView widget */}
+          <div className='hidden md:block w-[587px] h-[426px] mx-auto'>
+            <Chart dark = {dark}/>
+          </div>
+          
+          {/* pc version */}
+          <div className="hidden md:flex justify-center mt-auto w-full">
             {isAdmin.current === 1 ? (
               <>
                 <div className="flex justify-center items-center place-items-start cursor-pointer" 
@@ -317,6 +388,24 @@ function Home(dark) {
                   <span className="settingText mx-5 text-[11px]  bg-clip-text dark:text-[#f4ebdb] dark:bg-none">Status: Admin</span>
                   <img width={26}className="cursor-pointer" src={settingIcon} alt="second logo" />
                 </NavLink>
+              </>
+            ) : null}
+          </div>
+
+          {/* mobile version */}
+          <div className="md:hidden flex mt-auto w-full justify-end gap-2">
+            <button className="" onClick={()=>logout()}>
+              <img width={30} src={power} alt="power" />
+            </button>
+            {isAdmin.current === 1 ? (
+              <>
+                <div className="flex justify-center items-center place-items-start cursor-pointer" 
+                  onClick={() => {
+                    setClientSideBar(!clientSidebar);
+                  }}
+                >
+                  <img className="block" width={26} src={settingIcon} alt="sub-client" />
+                </div>
               </>
             ) : null}
           </div>
