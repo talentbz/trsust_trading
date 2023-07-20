@@ -1,6 +1,6 @@
 import React from "react";
 
-function HomeCell({ title, value, headingColor, active = false, ownstyle="t-heading text-[11px]", ownstyle2="text-[18px]" }) {
+function HomeCell({ title, value, headingColor, active = false, ownstyle="t-heading md:text-[11px] text-[16px]", ownstyle2="text-[18px]" }) {
   return (
     <div>
       <p className={`${
@@ -12,7 +12,7 @@ function HomeCell({ title, value, headingColor, active = false, ownstyle="t-head
       } dark:text-[#f4ebdb] dark:bg-none`}>
         {title}
       </p>
-      <p className={`${active ? 'text-[#3761f6] dark:text-[#E67406] dark:text-bold' : 'text-[#6a6661] dark:text-dark-text' } font-syn-regular ${ownstyle2} `}>{value}</p>
+      <p className={`${active ? 'text-[#E67406] md:text-[#3761f6] dark:text-[#E67406] dark:text-bold' : 'text-[#6a6661] dark:text-dark-text' } font-syn-regular ${ownstyle2} `}>{value}</p>
     </div>
   );
 };
